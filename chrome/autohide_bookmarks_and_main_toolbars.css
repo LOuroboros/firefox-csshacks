@@ -5,7 +5,7 @@ See the above repository for updates as well as full license text. */
   --uc-bm-height: 22px; /* Might need to adjust if the toolbar has other buttons */
   --uc-bm-padding: 2px; /* Vertical padding to be applied to bookmarks */
   --uc-navbar-height: -40px; /* navbar is main toolbar. Use negative value */
-  --uc-autohide-toolbar-delay: 600ms; /* The toolbar is hidden after 0.6s */
+  --uc-autohide-toolbar-delay: 0ms; /* The toolbar is hidden after 0.6s */
 }
 
 :root[uidensity="compact"] #navigator-toolbox{ --uc-bm-padding: 1px; --uc-navbar-height: -32px }
@@ -15,7 +15,7 @@ See the above repository for updates as well as full license text. */
 :root[sessionrestored] #PersonalToolbar{
   transform: rotateX(90deg);
   transform-origin: top;
-  transition: transform 135ms linear var(--uc-autohide-toolbar-delay) !important;
+  transition: transform 0ms linear var(--uc-autohide-toolbar-delay) !important;
   z-index: 2;
 }
 #nav-bar[customizing],#PersonalToolbar[customizing]{ transform: none !important }
@@ -52,13 +52,13 @@ See the above repository for updates as well as full license text. */
 /* Show when urlbar is focused */
 #nav-bar:focus-within + #PersonalToolbar,
 #navigator-toolbox > #nav-bar:focus-within{
-  transition-delay: 100ms !important;
+  transition-delay: 0ms !important;
   transform: rotateX(0);
 }
 
 /* Show when cursor is over the toolbar area */
 #navigator-toolbox:hover > .browser-toolbar{
-  transition-delay: 100ms !important;
+  transition-delay: 0ms !important;
   transform: rotateX(0);
 }
 
