@@ -1,0 +1,5 @@
+/* Navbar Height */
+/* https://www.reddit.com/r/firefox/comments/34zls6/change_navbar_height/cqzmelk/ */
+#nav-bar {
+  height: 31px !important;
+}
