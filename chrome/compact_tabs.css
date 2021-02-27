@@ -6,3 +6,25 @@
   max-width: 200px !important;
   min-width: 140px !important;
 }
+
+/* TABS: height */
+/* https://support.cdn.mozilla.net/de/questions/1276915#answer-1279712 */
+:root {
+  --tab-toolbar-navbar-overlap: 0px !important;
+  --tab-min-height: 24px !important; /* adjust to suit your needs */
+}
+
+:root #tabbrowser-tabs {
+  --tab-min-height: 24px !important; /* needs to be the same as above under :root */
+}
+
+#TabsToolbar {
+  height: var(--tab-min-height) !important;
+}
+
+#tabbrowser-tabs,
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox,
+.tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
+  min-height: var(--tab-min-height) !important;
+  max-height: var(--tab-min-height) !important;
+}
