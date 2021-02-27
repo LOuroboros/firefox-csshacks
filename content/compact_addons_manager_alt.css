@@ -1,0 +1,90 @@
+/*
+ * Simplified about:addons
+ * https://www.reddit.com/r/FirefoxCSS/comments/cnrz4h/
+ * Credits: /u/ongots
+ */
+ 
+@-moz-document url("chrome://mozapps/content/extensions/aboutaddons.html") {
+
+.main-heading {
+    padding-bottom:0px!important;
+    }
+
+.main-search {
+    padding-top:5px!important;
+    padding-bottom:5px!important;
+    margin-right:35px!important;
+    }
+
+div#main {
+    margin-left:0px!important;
+    }
+.sticky-container {
+    display:flex!important;flex-direction:row-reverse;
+    }
+
+.main-heading {
+    align-self:center!important;
+    }
+  
+.card.addon .addon-description, .addon-detail-description {
+    color: var(--in-content-page-color)!important;
+    }
+    
+#main {
+    max-width: 97%!important;
+    }
+    
+.addon-name {
+    font-size:14px!important;
+    }
+    
+.addon-description {
+    font-size:13px!important;
+    padding-left:20px!important;
+    margin-right:60px!important;
+    margin-top:-1px!important;
+    }
+    
+.card.addon {
+    margin:2px!important;
+    padding:4px!important;
+    box-shadow:none!important;
+    }
+    
+.card-heading-icon {
+    width:24px!important;
+    height:24px!important;
+    margin-top:-3px!important;
+    }
+    
+.card-contents{
+    flex-direction: row!important;
+    }
+    
+.addon.card {
+    height:18px!important;
+    }
+    
+.addon-name-container .more-options-button {
+    position:absolute!important;
+    right:40px!important;
+    }
+
+.toggle-button.extension-enable-button {
+    position:absolute!important;
+    right:68px!important;
+    }
+    
+h2.list-section-heading {
+    margin-bottom:5px!important;
+    }
+
+.card-heading-image {
+    width: auto !important;
+    height: 25px !important;
+    position: absolute !important;
+    right: 70px !important;
+    margin:-3px 0px 0px 0px !important;
+    }
+}
