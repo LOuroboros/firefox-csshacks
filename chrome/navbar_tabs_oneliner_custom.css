@@ -1,0 +1,164 @@
+/* This file contains a combination of navbar_tabs_oneliner.css, classic_firefox_menu_button.css and autohide_bookmarks_toolbar.css with a few tweaks.*/
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/navbar_tabs_oneliner.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Make tabs and navbar appear side-by-side tabs on right */
+
+/* Use page_action_buttons_on_hover.css to hide page-action-buttons to save more space for the address */
+
+/*
+urlbar_popup_full_width.css is VERY MUCH recommended for Firefox 71+ because of new urlbar popup
+*/
+
+/* Modify these to change relative widths or default height */
+#navigator-toolbox{
+  --uc-navigationbar-width: 40vw;
+  --uc-toolbar-height: 40px;
+  --uc-urlbar-min-width: none; /* Can set minimum width for focused urlbar here eg. 550px */
+}
+/* Override for other densities */
+:root[uidensity="compact"] #navigator-toolbox{ --uc-toolbar-height: 32px; }
+:root[uidensity="touch"] #navigator-toolbox{ --uc-toolbar-height: 40px; }
+
+/* prevent urlbar overflow on narrow windows */
+/* Dependent on how many items are in navigation toolbar ADJUST AS NEEDED */
+@media screen and (max-width: 1400px){
+  #urlbar-container{ min-width:unset !important }
+}
+
+#TabsToolbar{
+  margin-left: var(--uc-navigationbar-width);
+  --tabs-navbar-shadow-size: 0px;
+}
+#tabbrowser-tabs{ --tab-min-height: var(--uc-toolbar-height) !important; }
+
+/* This isn't useful when tabs start in the middle of the window */
+
+.titlebar-spacer[type="pre-tabs"]{ display: none }
+
+#navigator-toolbox > #nav-bar{
+  margin-right:calc(100vw - var(--uc-navigationbar-width));
+  margin-top: calc(0px - var(--uc-toolbar-height));
+}
+
+/* Window drag space  */
+:root[tabsintitlebar="true"] #nav-bar{ padding-left: 24px !important }
+
+/* Rules specific to window controls on right layout */
+@supports -moz-bool-pref("layout.css.osx-font-smoothing.enabled"){
+  .titlebar-buttonbox-container{ position: fixed; display: block; left: 0px; z-index: 3; }
+  :root[tabsintitlebar="true"] #nav-bar{ padding-left: 96px !important; padding-right: 0px !important; }
+}
+
+/* 1px margin on touch density causes tabs to be too high */
+.tab-close-button{ margin-top: 0 !important }
+
+/* Hide dropdown placeholder */
+#urlbar-container:not(:hover) .urlbar-history-dropmarker{ margin-inline-start: -28px; }
+
+/* Fix customization view */
+#customization-panelWrapper > .panel-arrowbox > .panel-arrow{ margin-inline-end: initial !important; }
+
+#urlbar:focus-within{ min-width: var(--uc-urlbar-min-width,none) !important; }
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/classic_firefox_menu_button.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* Makes the main menu button appear in the top left corner styled similarly to Firefox versions 4 to 29 */
+
+#PanelUI-button{
+   /* Nightly colors scheme */
+  /*--uc-fx-button-color: #9752fa;
+  --uc-fx-button-sec-color: #00b2fa8a;*/
+   
+  /* Release color scheme*/
+  --uc-fx-button-color: #ff4313;
+  --uc-fx-button-sec-color: #e39318;
+}
+
+#PanelUI-button{ -moz-box-ordinal-group: 0; margin-inline: 2px var(--uc-window-drag-space-width,0px) !important; }
+:root[tabsintitlebar] #nav-bar{ border-left-width: 0px; padding-left: 0px !important; }
+#PanelUI-menu-button{ -moz-box-align: start !important; }
+#PanelUI-menu-button > stack{
+  background-color: var(--uc-fx-button-color);
+  background-image: linear-gradient(var(--uc-fx-button-sec-color), transparent) !important;
+  padding-inline: 5px !important;
+  list-style-image: url(chrome://global/skin/icons/arrow-dropdown-12.svg) !important;
+  border-radius: 0 0 4px 4px !important;
+  border: 2px groove var(--uc-fx-button-color);
+  border-top: none;
+  display: -moz-box;
+  padding-block: 4px !important;
+}
+
+#PanelUI-menu-button:hover > stack,
+#PanelUI-menu-button[open] > stack{
+  background-color: var(--uc-fx-button-color) !important;
+  background-image: linear-gradient(rgba(100,100,150,0.3), transparent) !important;
+}
+
+#PanelUI-menu-button > stack::before{
+  display: -moz-box;
+  content: "Menu"; /* Change text here */
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_bookmarks_toolbar.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+#PersonalToolbar{
+  --uc-bm-height: 20px; /* Might need to adjust if the toolbar has other buttons */
+  --uc-bm-padding: 4px; /* Vertical padding to be applied to bookmarks */
+  --uc-autohide-toolbar-delay: 0ms; /* The toolbar is hidden after 0.6s */
+  
+  /* 0deg = "show" ; 90deg = "hide" ;  Set the following to control when bookmarks are shown */
+  --uc-autohide-toolbar-focus-rotation: 0deg; /* urlbar is focused */
+  --uc-autohide-toolbar-hover-rotation: 0deg; /* cursor is over the toolbar area */
+}
+
+:root[uidensity="compact"] #PersonalToolbar{ --uc-bm-padding: 1px }
+:root[uidensity="touch"] #PersonalToolbar{ --uc-bm-padding: 7px }
+
+#PersonalToolbar:not([customizing]){
+  position: relative;
+  margin-bottom: calc(0px - var(--uc-bm-height) - 2 * var(--uc-bm-padding));
+  transform: rotateX(90deg);
+  transform-origin: top;
+  transition: transform 0ms linear var(--uc-autohide-toolbar-delay) !important;
+  z-index: 1;
+}
+
+#PlacesToolbarItems > .bookmark-item,
+#OtherBookmarks,
+#PersonalToolbar > #import-button{
+  padding-block: var(--uc-bm-padding) !important;
+}
+
+#nav-bar:focus-within + #PersonalToolbar{
+  transition-delay: 0ms !important;
+  transform: rotateX(var(--uc-autohide-toolbar-focus-rotation,0));
+}
+
+#navigator-toolbox:hover > #PersonalToolbar{
+  transition-delay: 0ms !important;
+  transform: rotateX(var(--uc-autohide-toolbar-hover-rotation,0));
+}
+
+#navigator-toolbox:hover > #nav-bar:focus-within + #PersonalToolbar {  
+  transform: rotateX(0);
+}
+
+/* Uncomment to enable compatibility for multi-row_bookmarks.css */
+/* This would break buttons placed in the toolbar but that is likely not happening if you are using multi-row setup  */
+/*
+#PersonalToolbar:not([customizing]){
+  position: fixed;
+  display: block;
+  margin-bottom: 0px !important;
+}
+*/
