@@ -1,0 +1,8 @@
+/* MAX TABS WIDTH */
+/* http://forums.mozillazine.org/viewtopic.php?p=14839654#p14839654 */
+/* https://web.archive.org/web/20201027235249/http://forums.mozillazine.org/viewtopic.php?p=14839654 */
+.tabbrowser-tab:not([pinned])
+{
+  max-width: 200px !important;
+  min-width: 140px !important;
+}

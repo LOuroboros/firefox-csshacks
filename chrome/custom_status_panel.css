@@ -1,0 +1,9 @@
+/* LEGIBLE TOOLTIP ON BOTTOM LEFT CORNER WHEN HOVERING OVER LINKS */
+/* http://forums.mozillazine.org/viewtopic.php?p=14839654#p14839654 */
+/* https://web.archive.org/web/20201027235249/http://forums.mozillazine.org/viewtopic.php?p=14839654 */
+#statuspanel-label {
+  border: none !important;
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  font-family: Consolas, monospace !important;
+}
