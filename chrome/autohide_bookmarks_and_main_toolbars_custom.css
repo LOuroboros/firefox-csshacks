@@ -1,0 +1,136 @@
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_bookmarks_and_main_toolbars.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+#navigator-toolbox{
+  --uc-bm-height: 22px; /* Might need to adjust if the toolbar has other buttons */
+  --uc-bm-padding: 2px; /* Vertical padding to be applied to bookmarks */
+  --uc-navbar-height: -40px; /* navbar is main toolbar. Use negative value */
+  --uc-autohide-toolbar-delay: 0ms; /* The toolbar is hidden after 0.6s */
+}
+
+:root[uidensity="compact"] #navigator-toolbox{ --uc-bm-padding: 1px; --uc-navbar-height: -32px }
+:root[uidensity="touch"] #navigator-toolbox{ --uc-bm-padding: 6px }
+
+:root[sessionrestored] #nav-bar,
+:root[sessionrestored] #PersonalToolbar{
+  transform: rotateX(90deg);
+  transform-origin: top;
+  transition: transform 0ms linear var(--uc-autohide-toolbar-delay) !important;
+  z-index: 2;
+}
+#nav-bar[customizing],#PersonalToolbar[customizing]{ transform: none !important }
+
+#navigator-toolbox > #PersonalToolbar{
+  transform-origin: 0px var(--uc-navbar-height);
+  z-index: 1;
+  position: relative;
+}
+
+:root[sessionrestored]:not([customizing]) #navigator-toolbox{ margin-bottom:  calc(2px - var(--uc-bm-height) - 2 * var(--uc-bm-padding) + var(--uc-navbar-height)); }
+
+#PlacesToolbarItems > .bookmark-item,
+#OtherBookmarks,
+#PersonalToolbar > #import-button{
+  padding-block: var(--uc-bm-padding) !important;
+}
+
+/* Make sure the bookmarks toolbar is never collapsed even if it is disabled */
+#PersonalToolbar[collapsed="true"]{
+  min-height: initial !important;
+  max-height: initial !important;
+  visibility: hidden !important
+}
+
+/* The invisible toolbox will overlap sidebar so we'll work around that here */
+#navigator-toolbox{ pointer-events: none; border-bottom: none !important; }
+#PersonalToolbar{ border-bottom: 1px solid var(--chrome-content-separator-color) }
+#navigator-toolbox > *{ pointer-events: auto }
+
+/* SELECT TOOLBAR BEHAVIOR */
+/* Comment out or delete one of these to disable that behavior */
+
+/* Show when urlbar is focused */
+#nav-bar:focus-within + #PersonalToolbar,
+#navigator-toolbox > #nav-bar:focus-within{
+  transition-delay: 0ms !important;
+  transform: rotateX(0);
+}
+
+/* Show when cursor is over the toolbar area */
+#navigator-toolbox:hover > .browser-toolbar{
+  transition-delay: 0ms !important;
+  transform: rotateX(0);
+}
+
+/* Show when cursor is over popups/context-menus - cannot control which ones */
+/*
+#mainPopupSet:hover ~ box > toolbox > .browser-toolbar{
+  transition-delay: 100ms !important;
+  transform: rotateX(0);
+}
+*/
+
+/* Uncomment to enable compatibility for multi-row_bookmarks.css */
+/* This would break buttons placed in the toolbar but that is likely not happening if you are using multi-row setup  */
+/*
+#PersonalToolbar:not([customizing]){
+  position: fixed;
+  display: block;
+  margin-bottom: 0px !important;
+}
+*/
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* LEGIBLE TOOLTIP ON BOTTOM LEFT CORNER WHEN HOVERING OVER LINKS */
+/* http://forums.mozillazine.org/viewtopic.php?p=14839654#p14839654 */
+/* https://web.archive.org/web/20201027235249/http://forums.mozillazine.org/viewtopic.php?p=14839654 */
+#statuspanel-label {
+  border: none !important;
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  font-family: Consolas, monospace !important;
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* MAX TABS WIDTH */
+/* http://forums.mozillazine.org/viewtopic.php?p=14839654#p14839654 */
+/* https://web.archive.org/web/20201027235249/http://forums.mozillazine.org/viewtopic.php?p=14839654 */
+.tabbrowser-tab:not([pinned])
+{
+  max-width: 200px !important;
+  min-width: 140px !important;
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* TABS: height */
+/* https://support.cdn.mozilla.net/de/questions/1276915#answer-1279712 */
+:root {
+  --tab-toolbar-navbar-overlap: 0px !important;
+  --tab-min-height: 24px !important; /* adjust to suit your needs */
+}
+
+:root #tabbrowser-tabs {
+  --tab-min-height: 24px !important; /* needs to be the same as above under :root */
+}
+
+#TabsToolbar {
+  height: var(--tab-min-height) !important;
+}
+
+#tabbrowser-tabs,
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox,
+.tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
+  min-height: var(--tab-min-height) !important;
+  max-height: var(--tab-min-height) !important;
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* Navbar Height */
+/* https://www.reddit.com/r/firefox/comments/34zls6/change_navbar_height/cqzmelk/ */
+#nav-bar {
+  height: 31px !important;
+}
