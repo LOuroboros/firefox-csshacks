@@ -1,0 +1,8 @@
+/* Hide the Minimize/Maximize/Close buttons */
+/* https://www.reddit.com/r/FirefoxCSS/comments/amby9d */
+
+.titlebar-buttonbox-container{ display: none !important }
+
+#toolbar-menubar spacer {
+  display: none !important;
+}

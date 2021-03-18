@@ -134,3 +134,21 @@ See the above repository for updates as well as full license text. */
 #nav-bar {
   height: 31px !important;
 }
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* Hide the Minimize/Maximize/Close buttons */
+/* https://www.reddit.com/r/FirefoxCSS/comments/amby9d */
+
+.titlebar-buttonbox-container{ display: none !important }
+
+#toolbar-menubar spacer {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* https://www.reddit.com/r/FirefoxCSS/comments/m6txt7/how_do_i_delet_that_space_and_change_background/gr7sytl/ */
+
+.titlebar-spacer[type="pre-tabs"]{display:none;}
+.titlebar-spacer[type="post-tabs"]{display:none;}

@@ -1,0 +1,4 @@
+/* https://www.reddit.com/r/FirefoxCSS/comments/m6txt7/how_do_i_delet_that_space_and_change_background/gr7sytl/ */
+
+.titlebar-spacer[type="pre-tabs"]{display:none;}
+.titlebar-spacer[type="post-tabs"]{display:none;}
