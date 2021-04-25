@@ -7,14 +7,33 @@ See the above repository for updates as well as full license text. */
   --toolbarbutton-inner-padding: 6px !important;
   --proton-tab-block-margin: 2px !important;
   --tabs-shadow-size: 0px !important;
-	--arrowpanel-menuitem-padding: 5px !important;
+  --arrowpanel-menuitem-padding: 4px !important;
+  --panel-font-size: inherit !important;
+  --arrowpanel-padding: 0.8em !important;
 }
-
+.subview-subheader{ height: 24px }
 menupopup > menuitem,
 menupopup > menu{ padding-block: 0.3em !important; }
 
-#urlbar-container{ padding-block: 3px !important; }
+#urlbar-container{ padding-block: 2px !important; }
+#urlbar-background{ margin-block: 1px }
 /* This is kinda weird, but it makes the horizontal line between tabs and nav-bar render "inside" nav-bar thus tabs are more visibily separated even if there is less space there */
 #nav-bar{ 
   box-shadow: inset 0 var(--tabs-shadow-size) 0 var(--tabs-border-color) !important;
 }
+
+.tab-close-button{
+  margin-inline-start: 2px !important;
+  width: 16px !important;
+  height: 16px !important;
+  padding: 1px !important;
+}
+
+#tabbrowser-tabs{ --uc-tabs-scrollbutton-border: 2px }
+#scrollbutton-up,
+#scrollbutton-down{ border-block-width: var(--uc-tabs-scrollbutton-border,0px) !important; }
+
+/* OPTIONAL - show audio label in compact mode */
+/*
+.tab-secondary-label:is([soundplaying], [muted], [activemedia-blocked], [pictureinpicture]){ display: -moz-box !important; }
+*/
