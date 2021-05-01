@@ -10,6 +10,7 @@ See the above repository for updates as well as full license text. */
   --arrowpanel-menuitem-padding: 4px !important;
   --panel-font-size: inherit !important;
   --arrowpanel-padding: 0.8em !important;
+  --inline-tab-padding: 8px !important; /* 8px is default value since it looks good - lower values compactify tabs horizontally */
 }
 .subview-subheader{ height: 24px }
 menupopup > menuitem,
@@ -33,7 +34,9 @@ menupopup > menu{ padding-block: 0.3em !important; }
 #scrollbutton-up,
 #scrollbutton-down{ border-block-width: var(--uc-tabs-scrollbutton-border,0px) !important; }
 
-/* OPTIONAL - show audio label in compact mode */
+/* OPTIONAL - show audio label in compact mode and make the audio icon behavior match non-compact mode */
 /*
 .tab-secondary-label:is([soundplaying], [muted], [activemedia-blocked], [pictureinpicture]){ display: -moz-box !important; }
+#TabsToolbar:not(:hover) .tab-icon-image{ opacity: 1 !important; }
+#TabsToolbar:not(:hover) .tab-icon-overlay:not([pinned]){ opacity: 0 !important; }
 */
