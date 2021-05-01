@@ -133,6 +133,8 @@ See the above repository for updates as well as full license text. */
 /* https://www.reddit.com/r/firefox/comments/34zls6/change_navbar_height/cqzmelk/ */
 #nav-bar {
   height: 31px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
 }
 
 /* ------------------------------------------------------------------------------------------ */
