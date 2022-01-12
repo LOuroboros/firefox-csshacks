@@ -14,13 +14,15 @@ See the above repository for updates as well as full license text. */
 
 #toolbar-menubar[autohide="true"][inactive="true"]{ height: 0px !important; }
 
-:root[tabsintitlebar][sizemode="maximized"] #toolbar-menubar{ top: 8px; }
+@media (-moz-os-version: windows-win7),(-moz-os-version: windows-win10){
+  :root[tabsintitlebar][sizemode="maximized"] #toolbar-menubar{ top: 8px; }
+}
 
 #toolbar-menubar > spacer{ flex-grow: 1 }
 #toolbar-menubar[inactive] > .titlebar-buttonbox-container{ display: none }
 
 #main-menubar{
-  height: calc(var(--tab-min-height) + 3px);
+  height: calc(var(--tab-min-height) +  2 * var(--tab-block-margin,0px));
   background-color: var(--arrowpanel-background);
   color: var(--arrowpanel-color);
 }
@@ -30,7 +32,7 @@ See the above repository for updates as well as full license text. */
   content: "";
   display: -moz-box;
   width: 30px;
-  height: calc(var(--tab-min-height) + 3px);
+  height: calc(var(--tab-min-height) +  2 * var(--tab-block-margin,0px));
   background-image: linear-gradient(to right, var(--arrowpanel-background) 30%, transparent);
 }
 

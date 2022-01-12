@@ -29,30 +29,32 @@ See the above repository for updates as well as full license text. */
 }
 .accessibility-indicator > hbox{ padding-block: 0 !important }
 
-#tabbrowser-tabs .tabbrowser-tab{ height: var(--tab-min-height) }
+#tabbrowser-tabs .tabbrowser-tab{ height: calc(var(--tab-min-height) + 2 * var(--tab-block-margin,0px)) }
 
 #tabbrowser-tabs .tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"]{
   visibility: collapse !important;
 }
 
 /* Button re-styling */
-#tabs-newtab-button:hover,
-#tabbrowser-tabs .tabs-newtab-button:hover{ background-color: var(--toolbarbutton-hover-background) }
+#tabs-newtab-button{ transform: scale(0.8); }
+#tabs-newtab-button:hover{
+  background-color: var(--toolbarbutton-hover-background);
+  border-radius: var(--tab-border-radius);
+}
 
-#tabs-newtab-button > .toolbarbutton-icon,
-#tabbrowser-tabs .tabs-newtab-button > .toolbarbutton-icon{
+#tabs-newtab-button > .toolbarbutton-icon{
   padding: 0 !important;
   transform: scale(0.6);
   background-color: transparent !important;
 }
 /* Extra top padding  in maximized window */
-@media (-moz-os-version: windows-win10){
-  :root[sizemode="maximized"] #navigator-toolbox{ padding-top:7px !important; }
+@media (-moz-os-version: windows-win7),(-moz-os-version: windows-win10){
+  :root[tabsintitlebar][sizemode="maximized"] #navigator-toolbox{ padding-top:7px !important; }
 }
 /* Fix window controls not being clickable */
 :root[tabsintitlebar] #toolbar-menubar[autohide="true"][inactive]{
   transition: height 0ms steps(1) 80ms;
 }
-#nav-bar{
-  border-inline: var(--uc-window-drag-space-width) solid var(--toolbar-bgcolor);
+:where(#nav-bar){
+  border-inline: var(--uc-window-drag-space-width,0) solid var(--toolbar-bgcolor);
 }

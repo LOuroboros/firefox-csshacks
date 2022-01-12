@@ -7,23 +7,16 @@ See the above repository for updates as well as full license text. */
   -moz-box-ordinal-group: 0;
   display: -moz-box !important;
   position: relative;
-  margin-inline: -1px -19px !important;
-  padding: 0px !important;
+  margin-inline: -4px -20px !important;
+  padding-inline-start: 7px !important;
   z-index: -1;
   visibility: hidden;
+  width: unset !important;
 }
 .tabbrowser-tab[pinned] .tab-close-button{ display: none !important; }
 .tabbrowser-tab:hover .tab-close-button{
   background-color: var(--lwt-selected-tab-background-color,var(--toolbar-bgcolor)) !important;
   background-image: linear-gradient(var(--toolbarbutton-hover-background),var(--toolbarbutton-hover-background))
-}
-
-@media (-moz-proton){
-  .tab-close-button{
-    margin-inline: -4px calc(-16px - var(--inline-tab-padding) / 2) !important;
-    padding: 7px !important;
-    width: calc(16px + var(--inline-tab-padding)) !important;
-  }
 }
 
 /**** ONLY USE ONE OF THE FOLLOWING ****/
